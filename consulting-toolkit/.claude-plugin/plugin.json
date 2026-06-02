@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin.json",
+  "name": "consulting-toolkit",
+  "version": "1.0.0",
+  "description": "AI consulting delivery toolkit. Turns client industry research into ranked automation opportunities, n8n workflow blueprints, child-simple build playbooks, branded proposal PDFs, and tailored resumes.",
+  "author": {
+    "name": "JT Somwaru",
+    "url": "https://jtsomwaru.com"
+  },
+  "repository": "https://github.com/jtsomwaru/jt-claude-toolkit",
+  "license": "MIT"
+}

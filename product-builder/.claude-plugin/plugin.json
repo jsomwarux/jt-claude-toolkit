@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin.json",
+  "name": "product-builder",
+  "version": "1.0.0",
+  "description": "Product build loop for apps and tools (React Native/Expo, Next.js, macOS). Enforces an 8-phase build workflow, a quality-pass subagent that strips AI slop and verifies real implementation, a format-on-save hook, and a one-shot ship command.",
+  "author": {
+    "name": "JT Somwaru",
+    "url": "https://jtsomwaru.com"
+  },
+  "repository": "https://github.com/jtsomwaru/jt-claude-toolkit",
+  "license": "MIT"
+}

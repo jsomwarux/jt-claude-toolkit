@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+  Proposal template for weasyprint. Fill the double-brace fields and duplicate the
+  .use-case and pricing-row blocks as needed. Do NOT change the design tokens
+  (colors, header layout, accent line) unless the user explicitly asks.
+-->
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @page {
+    size: Letter;
+    margin: 0.75in 0.85in;
+    @bottom-center {
+      content: "{{FOOTER_NAME}}  |  {{FOOTER_SITE}}";
+      font-size: 8pt;
+      color: #9AA3B2;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #2D3748;
+    font-size: 10.5pt;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ── Split header ── */
+  .header { display: flex; justify-content: space-between; align-items: flex-start; }
+  .header-left .title { font-size: 22pt; font-weight: 700; color: #1A1A2E; margin: 0; }
+  .header-left .subtitle { font-size: 10pt; color: #6B7280; margin-top: 4px; }
+  .header-right { text-align: right; font-size: 9pt; color: #6B7280; line-height: 1.6; }
+  .header-right strong { color: #1A1A2E; }
+
+  /* ── Blue gradient accent line ── */
+  .accent-line {
+    height: 4px;
+    background: linear-gradient(90deg, #4A6CF7 0%, #6B8AFF 100%);
+    border-radius: 2px;
+    margin: 14px 0 22px 0;
+  }
+
+  /* ── Section headers ── */
+  .section-label {
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #4A6CF7;
+    margin: 22px 0 10px 0;
+  }
+  .divider { border: none; border-top: 1px solid #E5E7EB; margin: 20px 0; }
+  p { margin: 0 0 10px 0; }
+
+  /* ── Use case blocks ── */
+  .use-case { margin-bottom: 16px; }
+  .uc-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .uc-title { font-size: 12pt; font-weight: 700; color: #1A1A2E; }
+  .uc-price { font-size: 12pt; font-weight: 700; color: #4A6CF7; text-align: right; }
+  .rec-note { font-style: italic; color: #4A6CF7; font-size: 9.5pt; margin-top: 2px; }
+  ul { margin: 6px 0 0 0; padding-left: 18px; }
+  li { margin-bottom: 3px; }
+
+  /* ── Pricing table ── */
+  table.pricing { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  table.pricing td { padding: 8px 4px; border-bottom: 1px solid #E5E7EB; }
+  table.pricing td.amt { text-align: right; font-weight: 600; }
+  table.pricing tr.total td {
+    border-top: 2px solid #4A6CF7;
+    border-bottom: none;
+    font-size: 12pt;
+    font-weight: 700;
+    color: #1A1A2E;
+    padding-top: 12px;
+  }
+  table.pricing tr.total td.amt { color: #4A6CF7; }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-left">
+      <p class="title">{{PROPOSAL_TITLE}}</p>
+      <p class="subtitle">{{PROPOSAL_SUBTITLE}}</p>
+    </div>
+    <div class="header-right">
+      Prepared for<br><strong>{{CLIENT_NAME}}</strong><br>
+      {{CLIENT_CONTACT}}<br>
+      {{DATE}}
+    </div>
+  </div>
+
+  <div class="accent-line"></div>
+
+  <div class="section-label">Overview</div>
+  <p>{{OVERVIEW_PARAGRAPH}}</p>
+
+  <div class="section-label">Scope of Work</div>
+
+  <!-- Duplicate this block per use case -->
+  <div class="use-case">
+    <div class="uc-head">
+      <span class="uc-title">{{USE_CASE_TITLE}}</span>
+      <span class="uc-price">${{USE_CASE_PRICE}}</span>
+    </div>
+    <p>{{USE_CASE_DESCRIPTION}}</p>
+    <p class="rec-note">{{USE_CASE_REC_NOTE}}</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section-label">Investment</div>
+  <table class="pricing">
+    <!-- Duplicate this row per line item -->
+    <tr><td>{{LINE_ITEM}}</td><td class="amt">${{LINE_AMOUNT}}</td></tr>
+    <tr class="total"><td>Total</td><td class="amt">${{TOTAL}}</td></tr>
+  </table>
+
+  <div class="section-label">Timeline &amp; Delivery</div>
+  <p>{{TIMELINE_PARAGRAPH}}</p>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "jt-toolkit",
+  "version": "1.0.0",
+  "description": "JT's reusable Claude Code toolkit: AI consulting delivery and product-build workflows extracted into portable skills, agents, and commands.",
+  "owner": {
+    "name": "JT Somwaru",
+    "url": "https://jtsomwaru.com"
+  },
+  "plugins": [
+    {
+      "name": "consulting-toolkit",
+      "source": "./consulting-toolkit",
+      "description": "Client delivery: opportunity research, n8n workflow blueprints, build playbooks, proposal PDFs, and resume tailoring.",
+      "category": "productivity"
+    },
+    {
+      "name": "product-builder",
+      "source": "./product-builder",
+      "description": "App/product build loop: 8-phase workflow, quality-pass subagent, format-on-save hook, and ship command.",
+      "category": "development"
+    }
+  ]
+}
