@@ -39,7 +39,7 @@ ALWAYS follow this structure:
 - One action per step. If a step has an "and," it's probably two steps.
 - Every prompt the user must paste into their n8n builder agent goes in its own fenced code block, written out in full — never "tell the agent to build the webhook," always the literal prompt.
 - Spell out where to click and what to type. "Open the Twilio Console → Messaging → WhatsApp → Senders" beats "configure Twilio."
-- Surface known pitfalls inline at the step where they bite, not in a separate appendix. Examples from past builds: Gmail Trigger node version mismatch on Beelink n8n 2.18.4 (recreate the node manually if "Install this node" appears); n8n Read File nodes on an NSSM Windows service are restricted to `C:\WINDOWS\system32\config\systemprofile\.n8n-files`; never run WSL2/Docker for production n8n on Windows.
+- Surface known pitfalls inline at the step where they bite, not in a separate appendix. Examples from past builds: Gmail Trigger node version mismatch on some n8n versions (recreate the node manually if "Install this node" appears); n8n Read File nodes on an NSSM Windows service can be restricted to the service profile's `.n8n-files` directory; never run WSL2/Docker for production n8n on Windows when the deployment standard is native Node + NSSM.
 - Always end with a concrete test using sample/test data before real client data, and a delivery step where the client verifies accuracy.
 - Name the exact Google Sheet IDs, tab names, file paths, and node types when known. Vague references force the reader to guess.
 

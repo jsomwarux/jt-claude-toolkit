@@ -72,10 +72,11 @@ the GitHub form is best because it auto-updates later:
 (If you have not pushed yet, you can test locally instead with
 `/plugin marketplace add ~/code/jt-claude-toolkit`.)
 
-**Step 2.3.** Install both plugins:
+**Step 2.3.** Install the plugins:
 ```
 /plugin install consulting-toolkit@jt-toolkit
 /plugin install product-builder@jt-toolkit
+/plugin install operating-system@jt-toolkit
 ```
 
 **Step 2.4.** Reload so they load right now without restarting:
@@ -83,7 +84,7 @@ the GitHub form is best because it auto-updates later:
 /reload-plugins
 ```
 
-How to know it worked: type `/plugin` and you see both plugins listed and enabled.
+How to know it worked: type `/plugin` and you see the plugins listed and enabled.
 
 Note: plugins install at the user level, so once installed they are available in every folder
 you open Claude Code in. You do not reinstall per project.
@@ -137,14 +138,14 @@ git init && mkdir clients
 From now on, run `/consulting-toolkit:new-client ...` from inside this folder so the
 `clients/<name>/` folders all land here.
 
-**Step 4.2. Altmark (do this first, fastest return).** Copy the client template into your
-Altmark repo and fill the blanks (most are already filled with your real Beelink details):
+**Step 4.2. Client repos.** Copy the client template into any private client repo and fill
+the blanks with project-specific facts:
 ```bash
-cp ~/code/jt-claude-toolkit/templates/client-CLAUDE.md /path/to/altmark/CLAUDE.md
+cp ~/code/jt-claude-toolkit/templates/client-CLAUDE.md /path/to/client-repo/CLAUDE.md
 ```
 Then open it and delete anything that is generic how-to (how to write a proposal, how to design
-a workflow). That knowledge now lives in the skills. Keep only Altmark facts: infra, paths,
-Sheet IDs, credentials references, open items.
+a workflow). That knowledge now lives in the skills. Keep only private client facts: infra,
+paths, credential references, open items. Never paste live credentials or secrets.
 
 **Step 4.3. Action Arena (and any repo Codex and Claude Code both touch).** Use AGENTS.md so
 both tools read one file:
@@ -162,12 +163,11 @@ cp ~/code/jt-claude-toolkit/templates/ensemble-CLAUDE.md /path/to/nash-satoshi/C
 ```
 Fill in the exact request fields, model dict shape, and callback payload from the real code.
 
-**Step 4.5. Decide where the format-on-save hook should run.** `product-builder` ships a hook
-that runs prettier on files you edit. It is fail-safe (it does nothing in repos without
-prettier), but if you do not want it firing in your consulting folder, open `/plugin`, select
-`product-builder`, and disable it for that project. Leave it on in your app repos.
+**Step 4.5. Use project-native formatting.** `product-builder` does not enable a global
+format-on-save hook by default. Run each repo's normal formatting/lint/build commands so
+unrelated files do not churn silently.
 
-How to know it worked: open Claude Code in your Altmark repo and ask "what infra constraints
+How to know it worked: open Claude Code in a client repo and ask "what infra constraints
 apply here?" It should answer from your thin CLAUDE.md without you re-explaining.
 
 ---
@@ -203,7 +203,7 @@ Just ask in plain language: "Proposal for <client>: <use case> at <price>, <use 
 1. In the app repo: "Build <feature>." The `build-phases` skill drives plan, implement, test,
    LARP check, slop cleanup, and production validation.
 2. When ready: `/product-builder:ship "<commit message or PR title>"`. The `quality-pass`
-   agent runs a real verification, then it commits, pushes, and opens a PR.
+   agent runs real verification, inspects the diff, and prepares a scoped commit/PR handoff.
 
 ---
 
@@ -231,11 +231,12 @@ This is your core habit, now made mechanical:
 /plugin marketplace add jsomwarux/jt-claude-toolkit   # one time per machine
 /plugin install consulting-toolkit@jt-toolkit
 /plugin install product-builder@jt-toolkit
+/plugin install operating-system@jt-toolkit
 /reload-plugins
 
 /consulting-toolkit:new-client <company>              # scaffold + research
 /consulting-toolkit:build-workflow <slug> <workflow>  # blueprint + playbook
-/product-builder:ship "<message>"                     # quality pass + commit + PR
+/product-builder:ship "<message>"                     # quality pass + scoped ship handoff
 
 /agents        # see your agents
 /plugin        # enable, disable, browse

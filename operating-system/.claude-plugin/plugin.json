@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin.json",
+  "name": "operating-system",
+  "version": "1.0.0",
+  "description": "JT-specific operating-system workflows mirrored from OpenClaw source of truth: AI Context OS, client proof capture, LinkedIn corpus intake, n8n workflow blueprints, proposal PDFs, and product build quality gates.",
+  "author": {
+    "name": "JT Somwaru",
+    "url": "https://jtsomwaru.com"
+  },
+  "repository": "https://github.com/jsomwarux/jt-claude-toolkit",
+  "license": "MIT"
+}

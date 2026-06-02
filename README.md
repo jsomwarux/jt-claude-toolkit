@@ -23,8 +23,13 @@ Client delivery. Auto-invoked skills: `opportunity-research`, `n8n-blueprint`,
 ### product-builder
 App/product builds. Auto-invoked skill: `build-phases` (8-phase workflow). User-invoked
 skill: `ship`. Agent: `quality-pass` (simplify -> de-slop -> LARP assessment -> real
-verification). Hook: format-on-save (`PostToolUse` runs prettier on edited files if present,
-fail-safe). Disable the hook by deleting `product-builder/hooks/hooks.json` if unwanted.
+verification). Formatting is explicit/project-native; no global format-on-save hook is enabled
+by default.
+
+### operating-system
+JT-specific operating-system workflows mirrored from OpenClaw's source of truth. Skills:
+`ai-context-os`, `client-proof-capture`, `linkedin-corpus`, `n8n-blueprint`, `proposal-pdf`,
+and `product-build-loop`. Agents: `workflow-strategist`, `product-quality-pass`.
 
 ## Install
 
@@ -33,13 +38,14 @@ fail-safe). Disable the hook by deleting `product-builder/hooks/hooks.json` if u
 /plugin marketplace add ./jt-claude-toolkit
 /plugin install consulting-toolkit@jt-toolkit
 /plugin install product-builder@jt-toolkit
+/plugin install operating-system@jt-toolkit
 ```
 
 Once pushed to GitHub, other machines add it by repo (relative source paths only resolve
 when added via git, so use the GitHub form for distribution):
 
 ```bash
-/plugin marketplace add jtsomwaru/jt-claude-toolkit
+/plugin marketplace add jsomwarux/jt-claude-toolkit
 ```
 
 Plugin skills are always namespaced. Invoke the user-facing workflows as:
@@ -49,7 +55,7 @@ Plugin skills are always namespaced. Invoke the user-facing workflows as:
 ## Templates (not a plugin)
 
 `templates/` holds thin per-project config to copy into each repo:
-- `client-CLAUDE.md` — per-client infra, paths, constraints (Altmark worked example).
+- `client-CLAUDE.md` — per-client infra, paths, constraints with sanitized placeholders.
 - `app-AGENTS.md` — per-app stack + gates (Action Arena worked example; AGENTS.md so Codex
   and Claude Code share one source of truth).
 - `ensemble-CLAUDE.md` — the 4-LLM ensemble repo engine guide.

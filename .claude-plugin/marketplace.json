@@ -17,8 +17,14 @@
     {
       "name": "product-builder",
       "source": "./product-builder",
-      "description": "App/product build loop: 8-phase workflow, quality-pass subagent, format-on-save hook, and ship command.",
+      "description": "App/product build loop: 8-phase workflow, quality-pass subagent, explicit formatting, and safe ship handoff.",
       "category": "development"
+    },
+    {
+      "name": "operating-system",
+      "source": "./operating-system",
+      "description": "JT-specific operating workflows mirrored from OpenClaw: AI Context OS, proof capture, LinkedIn corpus, n8n blueprints, proposal PDFs, and product quality gates.",
+      "category": "productivity"
     }
   ]
 }

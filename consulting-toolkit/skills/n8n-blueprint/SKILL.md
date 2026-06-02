@@ -39,7 +39,7 @@ Node 2 — ...
 
 ## LLM call conventions
 
-- Anthropic HTTP Request node: `POST https://api.anthropic.com/v1/messages`, current Sonnet (`claude-sonnet-4-6` as of mid-2026 — verify the latest string at docs.claude.com, model IDs change) for reasoning, a cheaper model (current Haiku) for routing/extraction. Always specify `max_tokens` and parse `content[0].text`. Note: existing deployed Altmark workflows may pin an older string like `claude-sonnet-4-20250514`; keep a deployed workflow on its tested string unless you re-test.
+- Anthropic HTTP Request node: `POST https://api.anthropic.com/v1/messages`. Verify the current model ID at docs.claude.com before writing a new workflow; keep deployed workflows on their tested model string unless you re-test. Always specify `max_tokens` and parse `content[0].text`.
 - When a node must return structured data, instruct the model to return ONLY JSON, no markdown or preamble, and have the next node parse it. Include the exact JSON schema in the prompt.
 - For routing steps, output a small JSON object (e.g. `{"data_source": "...", "search_query": "...", "clarification_needed": false}`) and branch with a Switch node.
 
